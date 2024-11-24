@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lux Theme Sample</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.2/lux/bootstrap.min.css"
+    />
+    <style>
+    body {
+        background-color: #f8f9fa;
+        margin: 0; /* 기본 여백 제거 */
+        padding: 0;
+        height: 100vh; /* 화면 높이 기준 정렬 */
+}
+
+.wrapper {
+  flex: 1; /* 남은 공간을 차지 */
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+}
+
+.container {
+  width: 80%; /* 필요에 따라 조정 */
+  background: #ffffff;
+  padding: 20px;
+  margin-top: 70px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* 상단 네비게이션 */
+.navbar {
+  background-color: #343a40;
+  color: #fff;
+  height: 50px; /* 네비게이션 높이 */
+  line-height: 50px; /* 텍스트 수직 정렬 */
+  justify-content: space-between; /* 좌우 요소 분리 */
+}
+
+.navbar .navbar-brand {
+  color: #1F9BCF;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+/* 세로 네비게이션 */
+.sidebar {
+  width: 60px;
+  height: 100vh;
+  background-color: #2e3338;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease;
+  padding-top: 70px; /* 상단 네비게이션 높이만큼 여백 */
+}
+
+.sidebar:hover {
+  width: 200px;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  padding: 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #1F9BCF;
+}
+
+.sidebar img {
+  width: 30px;
+  height: 30px;
+}
+
+.sidebar i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.sidebar .submenu {
+  display: none;
+  margin-left: 15px;
+}
+
+.sidebar:hover .submenu {
+  display: block;
+}
+
+/* 단계 표시 */
+.step-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  flex: 1;
+}
+
+.step .step-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #A9A9A9;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  z-index: 1;
+}
+
+.step.active .step-number {
+  background-color: #1F9BCF;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  right: -35%;
+  width: 70%;
+  height: 2px;
+  background-color: #dee2e6;
+  z-index: 0;
+  transform: translateY(-30%);
+}
+
+.step:last-child::after {
+  display: none;
+}
+
+.step-title {
+  margin-top: 10px;
+}
+
+/* 결과 박스 */
+.result-box {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.result-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* 강조 텍스트 */
+.highlight {
+  font-weight: bold;
+  color: white;
+  background-color: #198754; /* 초록색 (정상) */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.highlight-danger {
+  font-weight: bold;
+  color: white;
+  background-color: #dc3545; /* 빨강색 (위험) */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.confidence-box {
+  font-weight: bold;
+  color: white;
+  background-color: #343a40; /* 검정색 (확률 박스) */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* 이미지 박스 */
+.image-box {
+  text-align: left;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.image-center {
+  text-align: center;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #6c757d;
+}
+
+    </style>
+  </head>
+
+  <body>
+    <!-- 상단 네비게이션 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="logo.png" alt="Logo" height="30" class="d-inline-block align-text-top" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 세로 네비게이션 -->
+    <div class="sidebar">
+        <a href="A_minimalistic_and_modern_dashboard_icon_designed_.png">
+            <img src="/" alt="Icon" />
+          </a>
+      <a href="#"><i class="bi bi-bar-chart-fill"></i> 분석</a>
+      <div class="submenu">
+        <a href="#"><i class="bi bi-cpu"></i> AI 모델</a>
+        <a href="#"><i class="bi bi-graph-up"></i> 데이터 시각화</a>
+      </div>
+    </div>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="wrapper">
+    <div class="container">
+      <div class="header text-center">
+        <h1 class="display-6">AIR 예측 결과</h1>
+      </div>
+
+      <!-- 단계 표시 -->
+      <div class="step-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">페이로드 입력</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">모델 선택</div>
+        </div>
+        <div class="step active">
+          <div class="step-number">3</div>
+          <div class="step-title">예측하기</div>
+        </div>
+      </div>
+
+    <!-- 페이로드 출력 -->
+       <!-- TODO: 데이터값 받아서 출력 -->
+       <div class="result-box">
+        <h5 class="result-title">입력한 페이로드</h5>
+        <p>POST HTTP/1.0 Mozilla/5.0 (Hydra) /admin/login [userid=admin&password=user872!!]</p>
+      </div>
+
+      <!-- 모델 결과 출력 -->
+        <!-- TODO: 데이터 연동 시 AI 예측 결과 표시(AI예측/공격 유형) -->
+      <div class="result-box">
+        <h5 class="result-title">분류형 모델 결과</h5>
+        <ul>
+            <li>
+                AI 예측: 인공지능에서 예측한 결과는 
+                <span class="highlight">정상</span>일 확률이 
+                <span class="confidence-box">95%</span>입니다.
+              </li>
+             <!--AI 예측이 공격일 때
+              <li>
+                AI 예측: 인공지능에서 예측한 결과는 
+                <span class="highlight-danger">공격</span>일 확률이 
+                <span class="confidence-box">85%</span>입니다.
+              </li>-->
+          <li>공격 유형: Normal</li>
+          <li>분석 기법 : 머신러닝 기반의 알고리즘</li>
+        </ul>
+      </div>
+
+      <!-- 설명형 모델 결과 -->
+        <!-- TODO: 데이터값 받아올 수 있는지 확인 후 진행 -->
+      <div class="result-box image-box">
+        <h5 class="result-title">설명형 모델 결과</h5>
+        <p>모델이 분석한 결과를 기반으로 추가 정보를 제공합니다.</p>
+        <div class="image-center">
+            <img src="{{ result.image_path }}" alt="모델 분석 결과 이미지" class="img-fluid" />
+        </div>        
+      </div>
+
+      <!-- 메인으로 돌아가기 버튼 -->
+      <div class="text-end mt-3">
+        <button type="button" class="btn btn-outline-info" style="user-select: auto !important;">메인으로 돌아가기</button>
+      </div>
+    </div>
+</div>
+
+    <!-- 푸터 -->
+    <div class="footer">Copyright © 2024 IGLOO Corp. ALL RIGHTS RESERVED.</div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"></script>
+  </body>
+</html>
